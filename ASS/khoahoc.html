@@ -1,0 +1,11 @@
+
+    <h1>DANH SÁCH MÔN HỌC</h1>
+    <div style="padding-top: 1%;" class="col-3" ng-repeat="mh in monhoc">
+        <div class="card">
+            <img src="images/logos/{{mh.Logo}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{mh.Name}}</h5>
+                <a href="#kiemtra/{{mh.Id}}" class="btn btn-primary">Thi ngay</a>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-route.js"></script>
+  <script src="db/Subjects.js"></script>
+  <script src="db/Quizs/ADAV.js"></script>
+</head>
+
+<body ng-app="ass">
+  <div class="container">
+    <div class="row" style="background-color: darkorange;">
+      <div class="col">
+        <a href="#0"><img width="10%" src="images/FPT_Polytechnic.png"></a><a href="#0"
+          style="padding-left: 20%;color: seashell;text-decoration: none;font-size: x-large;">Trang chủ<a href="#1"
+            style="padding-left: 3%;color: seashell;text-decoration: none;font-size: x-large;">Khóa học</a><a href="#2"
+            style="padding-left: 3%;color: seashell;text-decoration: none;font-size: x-large;">Giới thiệu</a><a
+            href="#3" style="padding-left: 3%;color: seashell;text-decoration: none;font-size: x-large;">Liên hệ</a><a
+            href="#4" style="padding-left: 3%;color: seashell;text-decoration: none;font-size: x-large;">Hỏi đáp</a><a
+            href="#5" style="padding-left: 3%;color: seashell;text-decoration: none;font-size: x-large;">Đăng
+            nhập</a></a>
+      </div>
+    </div>
+    <div style="padding-top: 10px;background-color: gray;" class="row">
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/Slideshow01.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5 style="color: black;">Hệ thống AP chuyên nghiệp</h5>
+              <p style="color: black;">Với hệ thống AP của FPoly thì thầy cô phụ huynh và các bạn sinh viên có thể tận
+                dụng tối đa quyền hạn của mình.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/Slideshow02.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5 style="color: black;">Trường cao đẳng thực hành FPT Polytechnic</h5>
+              <p style="color: black;">Địa chỉ: Tòa nhà FPT Polytechnic, phố Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà
+                Nội</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/Slideshow03.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5 style="color: black;">FPoly sự chuyên nghiệp đến từng chi tiết</h5>
+              <p style="color: black;">Với hệ thống nhà trường tiện nghi các bạn sinh viên sẽ được tận hưưởng một môi
+                trường học tập thật là tuyệt vời.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="row" style="background-color: gray;padding-top: 1%;" ng-view>
+    </div>
+    <footer class="panel panel-default row">
+      <div class="panel-heading text-center">
+        <p>FPT Polytechnic &copy; 2022. Nguyen Nhu Nam Assignment Web207.</p>
+      </div>
+    </footer>
+  </div>
+  <script>
+    var app = angular.module('ass', ['ngRoute']);
+    app.config(function ($routeProvider) {
+      $routeProvider
+        .when("/0", {
+          templateUrl: "home.html",
+        })
+        .when("/1", {
+          templateUrl: "khoahoc.html",
+          controller: "Monhoc"
+        })
+        .when("/2", {
+          templateUrl: "gioithieu.html",
+        })
+        .when("/3", {
+          templateUrl: "lienhe.html"
+        })
+        .when("/4", {
+          templateUrl: "hoidap.html"
+        })
+        .when("/5", {
+          templateUrl: "login.html"
+        })
+        .when("/Dangky", {
+          templateUrl: "Dangky.html"
+        })
+        .when("/Quyenmk", {
+          templateUrl: "Quyenmk.html"
+        })
+        .when("/Doimk", {
+          templateUrl: "Doimk.html"
+        })
+        .when("/Xemthem", {
+          templateUrl: "gioithieu.html"
+        })
+        .when("/kiemtra/:subjectId", {
+          templateUrl: "kiemtra.html",
+          controller: "TestProcessController"
+        })
+        .otherwise({
+          templateUrl: "home.html",
+        })
+    });
+    app.controller("Monhoc", function ($scope) {
+      $scope.monhoc = Bienmonhoc;
+      console.log($scope.monhoc);
+    });
+    app.controller("TestProcessController", function ($scope, $routeParams) {
+      $scope.subjects = Bienmonhoc;
+      $scope.quizs = eval($routeParams.subjectId + "Questions");
+    });
+  </script>
+</body>
+
+</html>
